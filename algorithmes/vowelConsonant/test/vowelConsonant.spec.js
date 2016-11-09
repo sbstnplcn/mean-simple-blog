@@ -15,31 +15,31 @@ describe('Count vowel and consonant', function () {
         assert.equal(true, true);
     });
 
-    xit('count ab', function () {
+    it('count ab', function () {
         assert.deepEqual(vowelConsonantCount('ab'), {v:1,c:1});
     });
 
-    xit('count Abc', function () {
+    it('count Abc', function () {
         assert.deepEqual(vowelConsonantCount('Abc'), {v:1,c:2});
     });
 
-    xit('count hello', function () {
+    it('count hello', function () {
         assert.deepEqual(vowelConsonantCount('hello'), {v:2,c:3});
     });
 
-    xit('count anticonstitutionnellement', function() {
+    it('count anticonstitutionnellement', function() {
       assert.deepEqual(vowelConsonantCount('anticonstitutionnellement'), {v:10, c: 15});
     });
 
-    xit('count empty', function () {
+    it('count empty', function () {
         assert.deepEqual(vowelConsonantCount(''), {v:0,c:0});
     });
 
-    xit('count null', function () {
+    it('count null', function () {
         assert.deepEqual(vowelConsonantCount(), {v:0,c:0});
     });
 
-    xit('count number', function () {
+    it('count number', function () {
         assert.deepEqual(vowelConsonantCount(3), {v:0,c:0});
     });
 
