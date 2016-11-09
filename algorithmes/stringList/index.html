@@ -52,7 +52,10 @@ Le fond rouge si elle apparait 3 fois ou plus
                 </tr>
             </table>`,
         controller: function() {
+            // order array names
             this.names = names.sort()
+
+            // create table with every values : name and count
             let count = 1
             let table = []
             for (let i in names) {
@@ -63,17 +66,18 @@ Le fond rouge si elle apparait 3 fois ou plus
                 }
                 table.push(table.name = names[i])
                 table.push(table.count = count)
+
             }
 
+            // create object with name = key, count = value
             let myobj = {};
-
             table.forEach(function(item, index) {
                 if (index % 2 === 0) {
                     myobj[item] = table[index + 1]
                 }
             })
 
-            console.log(myobj);
+            // affect myobj to this.names
             this.names = myobj
 
         }
