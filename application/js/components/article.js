@@ -1,9 +1,13 @@
 ((app) => {
     'use strict'
-    app.component('articles', {
-        templateUrl: 'js/components/articles.html',
-        controller: ['$http', function($http) {
+    app.component('article', {
+        templateUrl: 'js/components/article.html',
+        controller: ['$http','$stateParams', function($http,$stateParams) {
             angular.extend(this, {
+                page: {
+                    name: $stateParams.PublishedAt,
+                    content: {}
+                },
                 $onInit() {
                     $http.get('/posts.json').then((res) => {
                         this.articles = res.data
@@ -28,4 +32,4 @@
             })
         }]
     })
-})(angular.module('app.articles', []))
+})(angular.module('app.article', []))
