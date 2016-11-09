@@ -10,10 +10,26 @@ Le fond rouge si elle apparait 3 fois ou plus
 -->
 <html ng-app="app">
 
+<head>
+    <title>Algo Angular</title>
+    <link rel="stylesheet" href="/libs/tacit-0.6.1.min.css">
+</head>
+<style>
+    .orange {
+        background-color: orange;
+    }
+
+    .red {
+        background-color: red;
+    }
+</style>
+
 <body>
+    <h1>Exams 2 Algo Angular</h1>
+    <list></list>
 
 </body>
-
+<script src="libs/angular.min.js"></script>
 <script>
     const names = ['Jean', 'Pierre', 'Louis', 'Jean', 'William', 'Jean', 'Mila',
         'Mila', 'Nori', 'Brianna', 'Yu', 'Tomoko', 'Tomoko', 'Tomoko', 'Tomoko',
@@ -22,9 +38,20 @@ Le fond rouge si elle apparait 3 fois ou plus
         'Luigi', 'Luigi', 'Luigi', 'Luigi', 'Vesta', 'Ladawn', 'Geralyn'
     ];
 
-    var app = angular.module('app', []);
-
-    //YOUR CODE HERE
+    var app = angular.module('app', [])
+    app.component('list', {
+        template: `<table>
+                <tr><th>Noms</th></tr>
+                <tr ng-repeat="name in $ctrl.names track by $index" ng-class="">
+                    <td>
+                        {{name}}
+                    </td>
+                </tr>
+            </table>`,
+        controller: function() {
+            this.names = names.sort()
+        }
+    })
 </script>
 
 </html>
