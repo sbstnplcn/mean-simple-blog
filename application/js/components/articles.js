@@ -35,6 +35,20 @@
                         this.soloarticlestate = this.articlestate + index
                     }
 
+
+                    //editMode
+                    this.edit = (article) => {
+                        if (article.editMode) {
+                            article.editMode = false
+                        } else {
+                            article.editMode = true
+                        }
+                    }
+
+                    this.delete = (article, idx) => {
+                        this.articles.splice(idx, 1)
+                    }
+
                 }
             })
         }]

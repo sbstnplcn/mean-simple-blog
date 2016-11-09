@@ -33,12 +33,18 @@
             <div class="col-xs-12" ng-repeat="article in $ctrl.articles | limitTo : 1 : $ctrl.soloarticlestate">
                 <div class="thumbnail">
                     <a ng-click="$ctrl.close()">Close</a>
-                    <h3>{{article.title}}</h3>
+                    <h3>
+                        <span ng-if="!article.editMode">{{article.title}}</span>
+                        <textarea ng-if="article.editMode" type="text" name="title" ng-model="article.title"></textarea>
+                    </h3>
                     <p>{{$ctrl.date | date}}</p>
                     <hr/>
-                    <p>{{article.content}}</p>
-                    <a ng-click="$ctrl.edit()">Edit</a>
-                    <a ng-click="$ctrl.delete()">Delete</a>
+                    <p>
+                        <span ng-if="!article.editMode">{{article.content}}</span>
+                        <textarea  rows="4" cols="50" ng-if="article.editMode" type="text" name="title" ng-model="article.content"></textarea>
+                    </p>
+                    <a ng-click="$ctrl.edit(article)">{{(article.editMode ? 'Valider' : 'Edit')}}</a>
+                    <a ng-click="$ctrl.delete(article, $index)">Delete</a>
                 </div>
             </div>
         </div>
@@ -50,9 +56,13 @@
         <div class="row">
             <div class="thumbnail">
                 <a ng-click="$ctrl.cancel()">Cancel</a>
-                <h3><textarea type="text" ng-model="article.title"></textarea></h3>
+                <h3>
+                    <textarea type="text" ng-model="article.title"></textarea>
+                </h3>
                 <hr/>
-                <p><textarea rows="4" cols="50" type="text" ng-model="article.content"></textarea></p>
+                <p>
+                    <textarea rows="4" cols="50" type="text" ng-model="article.content"></textarea>
+                </p>
                 <a ng-click="$ctrl.add()">Add</a>
             </div>
         </div>
