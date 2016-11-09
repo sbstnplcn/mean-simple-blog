@@ -29,13 +29,6 @@
                         }
                     }
 
-                    //article
-                    this.soloarticlestate = 0
-                    this.showarticle = (index) => {
-                        this.soloarticlestate = this.articlestate + index
-                    }
-
-
                     //editMode
                     this.edit = (article) => {
                         if (article.editMode) {

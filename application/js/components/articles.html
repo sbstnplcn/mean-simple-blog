@@ -1,4 +1,4 @@
-<section>
+<section ng-if="!$ctrl.selectedArticle">
     <div class="container">
         <div class="row">
             <div class="col-xs-1 pagination-button">
@@ -12,7 +12,7 @@
                                 <h3>{{article.title}}</h3>
                                 <hr/>
                                 <p>{{article.content | limitTo:200}}</p>
-                                <a ng-click="$ctrl.showarticle($index); show">Learn More
+                                <a ng-click="$ctrl.selectedArticle = article">Learn More
                                     <i class="fa fa-arrow-right" aria-hidden="true"></i>
                                 </a>
                             </div>
@@ -27,31 +27,31 @@
     </div>
 </section>
 
-<section>
+<section ng-if="$ctrl.selectedArticle">
     <div class="container">
         <div class="row">
-            <div class="col-xs-12" ng-repeat="article in $ctrl.articles | limitTo : 1 : $ctrl.soloarticlestate">
+            <!-- <div class="col-xs-12" ng-repeat="article in $ctrl.articles | limitTo : 1 : $ctrl.soloarticlestate"> -->
                 <div class="thumbnail">
-                    <a ng-click="$ctrl.close()">Close</a>
+                    <a ng-click="$ctrl.selectedArticle = null">Close</a>
                     <h3>
-                        <span ng-if="!article.editMode">{{article.title}}</span>
+                        <span ng-if="!article.editMode">{{$ctrl.selectedArticle.title}}</span>
                         <textarea ng-if="article.editMode" type="text" name="title" ng-model="article.title"></textarea>
                     </h3>
                     <p>{{$ctrl.date | date}}</p>
                     <hr/>
                     <p>
-                        <span ng-if="!article.editMode">{{article.content}}</span>
+                        <span ng-if="!article.editMode">{{$ctrl.selectedArticle.content}}</span>
                         <textarea  rows="4" cols="50" ng-if="article.editMode" type="text" name="title" ng-model="article.content"></textarea>
                     </p>
                     <a ng-click="$ctrl.edit(article)">{{(article.editMode ? 'Valider' : 'Edit')}}</a>
                     <a ng-click="$ctrl.delete(article, $index)">Delete</a>
                 </div>
-            </div>
+            <!-- </div> -->
         </div>
     </div>
 </section>
 
-<section>
+<section ng-if="article.add">
     <div class="container">
         <div class="row">
             <div class="thumbnail">
