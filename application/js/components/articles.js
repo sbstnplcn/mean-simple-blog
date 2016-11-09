@@ -42,6 +42,11 @@
                         this.articles.splice(idx, 1)
                     }
 
+                    this.add = () => {
+                        this.selectedArticle = {}
+                        this.articles.push(this.articles)
+                    }
+
                 }
             })
         }]
