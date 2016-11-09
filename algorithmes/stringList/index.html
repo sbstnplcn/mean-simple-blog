@@ -42,9 +42,12 @@ Le fond rouge si elle apparait 3 fois ou plus
     app.component('list', {
         template: `<table>
                 <tr><th>Noms</th></tr>
-                <tr ng-repeat="name in $ctrl.names track by $index" ng-class="$ctrl.table.count == 2 ? 'orange' : $ctrl.table.count <= 3 ? 'red' : ''">
+                <tr ng-repeat="(key, value) in $ctrl.names track by $index" ng-class="value == 2 ? 'orange' : value >= 3 ? 'red' : ''">
                     <td>
-                        {{name}}
+                        {{key}}
+                    </td>
+                    <td>
+                        {{value}}
                     </td>
                 </tr>
             </table>`,
@@ -57,15 +60,21 @@ Le fond rouge si elle apparait 3 fois ou plus
                     count++
                 } else {
                     count = 1
-                    table.push(table.name = names[i])
                 }
-
+                table.push(table.name = names[i])
+                table.push(table.count = count)
             }
 
-            console.log(table)
-            console.log(names)
+            let myobj = {};
 
-            this.names = table
+            table.forEach(function(item, index) {
+                if (index % 2 === 0) {
+                    myobj[item] = table[index + 1]
+                }
+            })
+
+            console.log(myobj);
+            this.names = myobj
 
         }
     })
