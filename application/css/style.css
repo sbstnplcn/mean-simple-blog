@@ -1,0 +1,27 @@
+body{
+    margin-top: 2%;
+}
+
+.jumbotron{
+  border-radius: 2px !important;
+  border: 1px solid #e8e8e8 !important;
+}
+
+#header .fa-minus{
+  font-size: 44px;
+  color: blue;
+}
+
+.jumbotron p {
+    font-size: 14px ;
+}
+
+.pagination-button{
+    margin-top: 17%;
+}
+#articles{
+  margin: 50px 0;
+}
+.thumbnail {
+    padding: 25px;
+}
