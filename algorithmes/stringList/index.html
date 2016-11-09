@@ -10,10 +10,26 @@ Le fond rouge si elle apparait 3 fois ou plus
 -->
 <html ng-app="app">
 
+<head>
+    <title>Algo Angular</title>
+    <link rel="stylesheet" href="/libs/tacit-0.6.1.min.css">
+</head>
+<style>
+    .orange {
+        background-color: orange;
+    }
+
+    .red {
+        background-color: red;
+    }
+</style>
+
 <body>
+    <h1>Exams 2 Algo Angular</h1>
+    <list></list>
 
 </body>
-
+<script src="libs/angular.min.js"></script>
 <script>
     const names = ['Jean', 'Pierre', 'Louis', 'Jean', 'William', 'Jean', 'Mila',
         'Mila', 'Nori', 'Brianna', 'Yu', 'Tomoko', 'Tomoko', 'Tomoko', 'Tomoko',
@@ -22,9 +38,50 @@ Le fond rouge si elle apparait 3 fois ou plus
         'Luigi', 'Luigi', 'Luigi', 'Luigi', 'Vesta', 'Ladawn', 'Geralyn'
     ];
 
-    var app = angular.module('app', []);
+    var app = angular.module('app', [])
+    app.component('list', {
+        template: `<table>
+                <tr><th>Noms</th></tr>
+                <tr ng-repeat="(key, value) in $ctrl.names track by $index" ng-class="value == 2 ? 'orange' : value >= 3 ? 'red' : ''">
+                    <td>
+                        {{key}}
+                    </td>
+                    <td>
+                        {{value}}
+                    </td>
+                </tr>
+            </table>`,
+        controller: function() {
+            // order array names
+            this.names = names.sort()
 
-    //YOUR CODE HERE
+            // create table with every values : name and count
+            let count = 1
+            let table = []
+            for (let i in names) {
+                if (names[i - 1] === names[i]) {
+                    count++
+                } else {
+                    count = 1
+                }
+                table.push(table.name = names[i])
+                table.push(table.count = count)
+
+            }
+
+            // create object with name = key, count = value
+            let myobj = {};
+            table.forEach(function(item, index) {
+                if (index % 2 === 0) {
+                    myobj[item] = table[index + 1]
+                }
+            })
+
+            // affect myobj to this.names
+            this.names = myobj
+
+        }
+    })
 </script>
 
 </html>

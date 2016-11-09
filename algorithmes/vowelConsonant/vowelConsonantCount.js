@@ -4,6 +4,8 @@
 */
 
 module.exports = function vowelConsonantCount(word){
-    // YOUR CODE HERE :)
-
+  return {
+      v: (word ? word.toString().match(/([a-z])/ig) ? word.match(/([aeiouy])/ig).length : 0 : 0 ),
+      c: (word ? word.toString().match(/([a-z])/ig) ? word.match(/([^aeiouy])/ig).length : 0 : 0)
+  }
 }
