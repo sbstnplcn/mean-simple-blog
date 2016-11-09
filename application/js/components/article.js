@@ -2,12 +2,8 @@
     'use strict'
     app.component('article', {
         templateUrl: 'js/components/article.html',
-        controller: ['$http','$stateParams', function($http,$stateParams) {
+        controller: ['$http', function($http) {
             angular.extend(this, {
-                page: {
-                    name: $stateParams.PublishedAt,
-                    content: {}
-                },
                 $onInit() {
                     $http.get('/posts.json').then((res) => {
                         this.articles = res.data

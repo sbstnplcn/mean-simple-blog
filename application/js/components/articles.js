@@ -7,7 +7,11 @@
                 $onInit() {
                     $http.get('/posts.json').then((res) => {
                         this.articles = res.data
+                        this.date = new Date(this.articles[0].PublishedAt * 1000)
+
                     })
+
+                    //articles
                     this.articlestate = 0
                     this.next = () => {
                         if (this.articlestate == this.articles.length - 1) {
@@ -24,6 +28,13 @@
                             this.articlestate--
                         }
                     }
+
+                    //article
+                    this.soloarticlestate = 0
+                    this.showarticle = (index) => {
+                        this.soloarticlestate = this.articlestate + index
+                    }
+
                 }
             })
         }]
