@@ -9,6 +9,9 @@
                         this.articles = res.data
                     })
 
+                    //get date
+                    let d = new Date()
+                    this.date = d.getTime()
                     //articles
                     this.articlestate = 0
                     this.next = () => {
@@ -28,11 +31,11 @@
                     }
 
                     //editMode
-                    this.edit = (selectedArticle) => {
+                    this.edit = (selectedArticle, idx) => {
                         if (selectedArticle.editMode) {
-                            selectedArticle.editMode = false
+                            this.selectedArticle.editMode = false
                         } else {
-                            selectedArticle.editMode = true
+                            this.selectedArticle.editMode = true
                         }
                     }
 
@@ -41,9 +44,10 @@
                         this.selectedArticle = null
                     }
 
-                    this.add = () => {
-                        this.selectedArticle = {}
-                        this.articles.push(this.selectedArticle)
+                    this.add = (newArticle) => {
+                        this.newArticle = {}
+                        this.articles.push(this.newArticle)
+                        this.addArticle = null
                     }
 
                 }
