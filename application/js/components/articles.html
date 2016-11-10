@@ -60,7 +60,7 @@
                     <a ng-if="$ctrl.selectedArticle.editMode" ng-click="$ctrl.cancel($ctrl.selectedArticle, $index)">Cancel</a>
                 </p>
                 <p>
-                    <a ng-click="$ctrl.delete(selectedArticle, $index)">Delete</a>
+                    <a ng-click="$ctrl.delete($ctrl.selectedArticle, $index)">Delete</a>
                 </p>
             </div>
         </div>

@@ -47,6 +47,7 @@
                     }
 
                     this.delete = (articles, idx) => {
+                        console.log(idx);
                         this.articles.splice(idx, 1)
                         this.selectedArticle = null
                     }
