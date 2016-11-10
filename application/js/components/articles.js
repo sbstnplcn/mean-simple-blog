@@ -10,8 +10,7 @@
                     })
 
                     // get date
-                    let d = new Date()
-                    this.date = d.getTime()
+                    this.date = Math.round(new Date().getTime() / 1000)
 
                     // pagination
                     this.articlestate = 0
@@ -54,6 +53,7 @@
 
                     // addMode
                     this.add = () => {
+                        this.newArticle.PublishedAt = this.date
                         this.articles.push(this.newArticle)
                         this.newArticle = {}
                         this.addNewArticle = null
