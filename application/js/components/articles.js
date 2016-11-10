@@ -12,7 +12,7 @@
                     //get date
                     let d = new Date()
                     this.date = d.getTime()
-                    //articles
+                        //articles
                     this.articlestate = 0
                     this.next = () => {
                         if (this.articlestate == this.articles.length - 1) {
@@ -31,12 +31,19 @@
                     }
 
                     //editMode
+                    let previous = {}
                     this.edit = (selectedArticle, idx) => {
                         if (selectedArticle.editMode) {
                             this.selectedArticle.editMode = false
                         } else {
+                            previous[selectedArticle.idx] = angular.copy(selectedArticle)
                             this.selectedArticle.editMode = true
                         }
+                    }
+
+                    this.cancel = (selectedArticle, idx) => {
+                        this.selectedArticle= previous[selectedArticle.idx]
+                        this.selectedArticle.editMode = false
                     }
 
                     this.delete = (articles, idx) => {

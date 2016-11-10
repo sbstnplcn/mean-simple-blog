@@ -55,7 +55,7 @@
                     <textarea rows="4" cols="50" ng-if="$ctrl.selectedArticle.editMode" type="text" name="title" ng-model="$ctrl.selectedArticle.content"></textarea>
                 </p>
                 <p>
-                    <a ng-if="$ctrl.selectedArticle.editMode" ng-click="$ctrl.cancel()">Cancel</a>
+                    <a ng-if="$ctrl.selectedArticle.editMode" ng-click="$ctrl.cancel($ctrl.selectedArticle, $index)">Cancel</a>
                     <a ng-click="$ctrl.edit($ctrl.selectedArticle, $index)">{{($ctrl.selectedArticle.editMode ? 'Valider' : 'Edit')}}</a>
                 </p>
                 <p>
