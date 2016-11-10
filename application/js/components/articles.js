@@ -7,8 +7,6 @@
                 $onInit() {
                     $http.get('/posts.json').then((res) => {
                         this.articles = res.data
-                        this.date = new Date(this.articles[0].PublishedAt * 1000)
-
                     })
 
                     //articles
@@ -19,8 +17,8 @@
                         } else {
                             this.articlestate++
                         }
-
                     }
+
                     this.prev = () => {
                         if (this.articlestate <= 0) {
                             this.articlestate = this.articles.length
@@ -30,21 +28,22 @@
                     }
 
                     //editMode
-                    this.edit = (article) => {
-                        if (article.editMode) {
-                            article.editMode = false
+                    this.edit = (selectedArticle) => {
+                        if (selectedArticle.editMode) {
+                            selectedArticle.editMode = false
                         } else {
-                            article.editMode = true
+                            selectedArticle.editMode = true
                         }
                     }
 
-                    this.delete = (article, idx) => {
+                    this.delete = (articles, idx) => {
                         this.articles.splice(idx, 1)
+                        this.selectedArticle = null
                     }
 
                     this.add = () => {
                         this.selectedArticle = {}
-                        this.articles.push(this.articles)
+                        this.articles.push(this.selectedArticle)
                     }
 
                 }
