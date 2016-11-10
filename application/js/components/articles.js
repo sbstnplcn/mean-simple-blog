@@ -9,10 +9,11 @@
                         this.articles = res.data
                     })
 
-                    //get date
+                    // get date
                     let d = new Date()
                     this.date = d.getTime()
-                        //articles
+
+                    // pagination
                     this.articlestate = 0
                     this.next = () => {
                         if (this.articlestate == this.articles.length - 1) {
@@ -30,7 +31,7 @@
                         }
                     }
 
-                    //editMode
+                    // editMode
                     let previous = {}
                     this.edit = (selectedArticle, idx) => {
                         if (selectedArticle.editMode) {
@@ -42,7 +43,7 @@
                     }
 
                     this.cancel = (selectedArticle, idx) => {
-                        this.selectedArticle= previous[selectedArticle.idx]
+                        this.selectedArticle = previous[selectedArticle.idx]
                         this.selectedArticle.editMode = false
                     }
 
@@ -51,10 +52,11 @@
                         this.selectedArticle = null
                     }
 
-                    this.add = (newArticle) => {
-                        this.newArticle = {}
+                    // addMode
+                    this.add = () => {
                         this.articles.push(this.newArticle)
-                        this.addArticle = null
+                        this.newArticle = {}
+                        this.addNewArticle = null
                     }
 
                 }

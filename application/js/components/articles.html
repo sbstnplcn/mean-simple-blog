@@ -1,5 +1,5 @@
 <!-- List Articles -->
-<section ng-if="!$ctrl.selectedArticle && !$ctrl.addArticle">
+<section ng-if="!$ctrl.selectedArticle && !$ctrl.addNewArticle">
     <div class="container">
         <div class="row">
             <div class="col-xs-1 pagination-button">
@@ -12,7 +12,7 @@
                             <div class="thumbnail text-center">
                                 <h3>{{article.title}}</h3>
                                 <hr/>
-                                <p>{{article.content | limitTo:200}}</p>
+                                <p>{{article.content | limitTo:200}}...</p>
                                 <a ng-click="$ctrl.selectedArticle = article">Learn More
                                     <i class="fa fa-arrow-right" aria-hidden="true"></i>
                                 </a>
@@ -27,7 +27,7 @@
         </div>
         <div class="row">
             <div class="col-xs-12 text-center">
-                <a ng-click="$ctrl.addArticle = true">
+                <a ng-click="$ctrl.addNewArticle = true">
                     <i class="fa fa-plus" aria-hidden="true"></i>
                     Add Article</a>
             </div>
@@ -46,8 +46,8 @@
                     <textarea ng-if="$ctrl.selectedArticle.editMode" type="text" name="title" ng-model="$ctrl.selectedArticle.title"></textarea>
                 </h3>
                 <p>
-                    <span ng-if="!$ctrl.addArticle">{{$ctrl.selectedArticle.PublishedAt * 1000 | date }}</span>
-                    <p ng-if="$ctrl.addArticle" ng-model="selectedArticle.PublishedAt">{{$ctrl.date | date}}</p>
+                    <span ng-if="!$ctrl.addNewArticle">{{$ctrl.selectedArticle.PublishedAt * 1000 | date }}</span>
+                    <p ng-if="$ctrl.addNewArticle" ng-model="selectedArticle.PublishedAt">{{$ctrl.date | date}}</p>
                 </p>
                 <hr/>
                 <p>
@@ -55,8 +55,8 @@
                     <textarea rows="4" cols="50" ng-if="$ctrl.selectedArticle.editMode" type="text" name="title" ng-model="$ctrl.selectedArticle.content"></textarea>
                 </p>
                 <p>
-                    <a ng-if="$ctrl.selectedArticle.editMode" ng-click="$ctrl.cancel($ctrl.selectedArticle, $index)">Cancel</a>
                     <a ng-click="$ctrl.edit($ctrl.selectedArticle, $index)">{{($ctrl.selectedArticle.editMode ? 'Valider' : 'Edit')}}</a>
+                    <a ng-if="$ctrl.selectedArticle.editMode" ng-click="$ctrl.cancel($ctrl.selectedArticle, $index)">Cancel</a>
                 </p>
                 <p>
                     <a ng-click="$ctrl.delete(selectedArticle, $index)">Delete</a>
@@ -67,23 +67,21 @@
 </section>
 
 <!-- Add Mode -->
-<section ng-if="$ctrl.addArticle">
+<section ng-if="$ctrl.addNewArticle">
     <div class="container">
         <div class="row">
             <div class="thumbnail">
-                <a ng-click="$ctrl.addArticle = null">Close</a>
+                <a ng-click="$ctrl.addNewArticle = null">Close</a>
                 <h3>
                     <span>{{$ctrl.newArticle.title}}</span>
                 </h3>
                 <p>
-                    <p ng-if="$ctrl.addArticle" ng-model="article.PublishedAt">{{$ctrl.date | date}}</p>
+                    {{$ctrl.newArticle.PublishedAt}}
                 </p>
                 <hr/>
                 <p>
                     <span>{{$ctrl.newArticle.content}}</span>
                 </p>
-                <a ng-click="$ctrl.cancel()">Cancel</a>
-                <a ng-click="$ctrl.delete(newArticle, $index)">Delete</a>
             </div>
         </div>
     </div>
@@ -91,13 +89,14 @@
         <div class="row">
             <div class="thumbnail">
                 <h3>
-                    <textarea type="text" ng-model="newArticle.title"></textarea>
+                    <textarea type="text" ng-model="$ctrl.newArticle.title"></textarea>
                 </h3>
                 <hr/>
+                <input type="date" ng-if="$ctrl.addNewArticle" ng-model="$ctrl.newArticle.PublishedAt" ng-value="{{this.date / 1000}}"></input>
                 <p>
-                    <textarea rows="4" cols="50" type="text" ng-model="newArticle.content"></textarea>
+                    <textarea rows="4" cols="50" type="text" ng-model="$ctrl.newArticle.content"></textarea>
                 </p>
-                <a ng-click="$ctrl.add(newArticle)">Add</a>
+                <a ng-click="$ctrl.add()">Add</a>
             </div>
         </div>
     </div>
