@@ -23,8 +23,8 @@
                     }
 
                     this.prev = () => {
-                        if (this.articlestate <= 0) {
-                            this.articlestate = this.articles.length
+                        if (this.articlestate < 1) {
+                            this.articlestate = this.articles.length - 1
                         } else {
                             this.articlestate--
                         }
