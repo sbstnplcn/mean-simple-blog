@@ -10,9 +10,11 @@
                     })
 
                     // get date
+                    //
                     this.date = new Date().getTime()
 
                     // pagination
+                    //
                     this.articlestate = 0
                     this.next = () => {
                         if (this.articlestate == this.articles.length - 1) {
@@ -30,33 +32,42 @@
                         }
                     }
 
+                    // select mode
+                    //
+                    this.selectArticle = (article , index) => {
+                        this.selectedArticle = article;
+                        this.selectedArticle.position = index
+                    }
+
                     // editMode
+                    //
                     let previous = {}
 
-                    this.edit = (selectedArticle, idx) => {
+                    this.edit = (selectedArticle, index) => {
                         if (selectedArticle.editMode) {
                             $http.put('/articles/' + selectedArticle._id, selectedArticle).then((res) => {
                                 this.selectedArticle.editMode = false
                             })
                         } else {
-                            previous[selectedArticle.idx] = angular.copy(selectedArticle)
+                            previous[selectedArticle.index] = angular.copy(selectedArticle)
                             this.selectedArticle.editMode = true
                         }
                     }
 
-                    this.cancel = (selectedArticle, idx) => {
-                        this.selectedArticle = previous[selectedArticle.idx]
-                        this.selectedArticle.editMode = false
+                    this.cancel = (selectedArticle, index) => {
+                        this.selectedArticle = previous[selectedArticle.index]
+                        selectedArticle.editMode = null
                     }
 
-                    this.delete = (selectedArticle, idx) => {
+                    this.delete = (selectedArticle) => {
                         $http.delete('/articles/' + selectedArticle._id, selectedArticle).then((res) => {
-                            this.articles.splice(idx, 1)
+                            this.articles.splice(selectedArticle.position, 1)
                         })
                         this.selectedArticle = null
                     }
 
                     // addMode
+                    //
                     this.add = () => {
                         $http.post('/articles', this.newArticle).then((res) => {
                             this.newArticle.PublishedAt = this.date
@@ -64,6 +75,11 @@
                             this.newArticle = {}
                             this.addNewArticle = null
                         })
+                    }
+
+                    this.closeAddNewArticle = () => {
+                      this.newArticle = {}
+                      this.addNewArticle = null
                     }
 
                 }
