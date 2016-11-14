@@ -1,9 +1,6 @@
 ((app) => {
     'use strict'
     app.component('articles', {
-        bindings: {
-            editMode: "<"
-        },
         templateUrl: 'js/components/articles.html',
         controller: ['$http', function($http) {
             angular.extend(this, {
@@ -12,65 +9,64 @@
                         this.articles = res.data
                     })
 
-                    // get date
+                    //// get date ////
                     //
                     this.date = new Date().getTime()
 
-                    // pagination
+                    //// pagination ////
                     //
                     this.articlestate = 0
                     this.next = () => {
-                        if (this.articlestate == this.articles.length - 1) {
-                            this.articlestate = 0
-                        } else {
-                            this.articlestate++
-                        }
+                        this.articlestate == this.articles.length - 1 ? this.articlestate = 0 : this.articlestate++
                     }
 
                     this.prev = () => {
-                        if (this.articlestate < 1) {
-                            this.articlestate = this.articles.length - 1
-                        } else {
-                            this.articlestate--
-                        }
+                        this.articlestate < 1 ? this.articlestate = this.articles.length - 1 : this.articlestate--
                     }
 
-                    // select mode
+                    //// select mode ////
                     //
-                    this.selectArticle = (article, index) => {
-                        this.selectedArticle = article;
+                    this.selectArticle = (selectedArticle, index) => {
+                        this.selectedArticle = selectedArticle
                         this.selectedArticle.position = index
                     }
 
-                    // editMode
+                    this.close = () => {
+                        this.selectedArticle = null
+                    }
+                    //// editMode ////
                     //
                     let previous = {}
 
-                    this.edit = (selectedArticle, index) => {
+                    // edit
+                    this.edit = (selectedArticle) => {
                         if (selectedArticle.editMode) {
                             $http.put('/articles/' + selectedArticle._id, selectedArticle).then((res) => {
                                 this.selectedArticle.editMode = false
                             })
                         } else {
-                            previous[selectedArticle.index] = angular.copy(selectedArticle)
+                            previous[selectedArticle.position] = angular.copy(selectedArticle)
                             this.selectedArticle.editMode = true
                         }
                     }
 
-                    this.cancel = (selectedArticle, index) => {
-                        this.selectedArticle = previous[selectedArticle.index]
-                        selectedArticle.editMode = null
+                    // cancel
+                    this.cancel = (selectedArticle) => {
+                        this.selectedArticle = previous[selectedArticle.position]
+                        this.articles[selectedArticle.position] = this.selectedArticle
                     }
 
-                    this.delete = (selectedArticle) => {
+                    // delete
+                    this.delete = (selectedArticle, position) => {
                         $http.delete('/articles/' + selectedArticle._id, selectedArticle).then((res) => {
                             this.articles.splice(selectedArticle.position, 1)
                         })
                         this.selectedArticle = null
                     }
 
-                    // addMode
+                    //// addMode ////
                     //
+                    // add Article
                     this.add = () => {
                         $http.post('/articles', this.newArticle).then((res) => {
                             this.newArticle.PublishedAt = this.date
@@ -80,6 +76,7 @@
                         })
                     }
 
+                    // close AddNewArticle
                     this.closeAddNewArticle = () => {
                         this.newArticle = {}
                         this.addNewArticle = null
