@@ -1,6 +1,9 @@
 ((app) => {
     'use strict'
     app.component('articles', {
+        bindings: {
+            editMode: "<"
+        },
         templateUrl: 'js/components/articles.html',
         controller: ['$http', function($http) {
             angular.extend(this, {
@@ -34,7 +37,7 @@
 
                     // select mode
                     //
-                    this.selectArticle = (article , index) => {
+                    this.selectArticle = (article, index) => {
                         this.selectedArticle = article;
                         this.selectedArticle.position = index
                     }
@@ -78,8 +81,8 @@
                     }
 
                     this.closeAddNewArticle = () => {
-                      this.newArticle = {}
-                      this.addNewArticle = null
+                        this.newArticle = {}
+                        this.addNewArticle = null
                     }
 
                 }
