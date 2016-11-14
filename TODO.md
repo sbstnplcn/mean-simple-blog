@@ -1,2 +1,2 @@
-- Fix delete  
-- Add Server + BDD  
+- Fix delete : Always delete first post instead of the selectedArticle   
+
