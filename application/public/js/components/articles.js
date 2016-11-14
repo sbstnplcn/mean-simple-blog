@@ -5,12 +5,12 @@
         controller: ['$http', function($http) {
             angular.extend(this, {
                 $onInit() {
-                    $http.get('/posts.json').then((res) => {
+                    $http.get('/articles').then((res) => {
                         this.articles = res.data
                     })
 
                     // get date
-                    this.date = Math.round(new Date().getTime() / 1000)
+                    this.date = new Date().getTime()
 
                     // pagination
                     this.articlestate = 0
@@ -32,9 +32,12 @@
 
                     // editMode
                     let previous = {}
+
                     this.edit = (selectedArticle, idx) => {
                         if (selectedArticle.editMode) {
-                            this.selectedArticle.editMode = false
+                            $http.put('/articles/' + selectedArticle._id, selectedArticle).then((res) => {
+                                this.selectedArticle.editMode = false
+                            })
                         } else {
                             previous[selectedArticle.idx] = angular.copy(selectedArticle)
                             this.selectedArticle.editMode = true
@@ -46,18 +49,21 @@
                         this.selectedArticle.editMode = false
                     }
 
-                    this.delete = (articles, idx) => {
-                        console.log(idx);
-                        this.articles.splice(idx, 1)
+                    this.delete = (selectedArticle, idx) => {
+                        $http.delete('/articles/' + selectedArticle._id, selectedArticle).then((res) => {
+                            this.articles.splice(idx, 1)
+                        })
                         this.selectedArticle = null
                     }
 
                     // addMode
                     this.add = () => {
-                        this.newArticle.PublishedAt = this.date
-                        this.articles.push(this.newArticle)
-                        this.newArticle = {}
-                        this.addNewArticle = null
+                        $http.post('/articles', this.newArticle).then((res) => {
+                            this.newArticle.PublishedAt = this.date
+                            this.articles.push(this.newArticle)
+                            this.newArticle = {}
+                            this.addNewArticle = null
+                        })
                     }
 
                 }
