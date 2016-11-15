@@ -1,3 +1,3 @@
 ((app) => {
     'use strict'
-})(angular.module('app', ['app.articles']))
+})(angular.module('app', ['app.articles', 'app.services']))
