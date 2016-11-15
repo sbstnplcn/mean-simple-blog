@@ -2,10 +2,10 @@
     'use strict'
     app.component('articles', {
         templateUrl: 'js/components/articles.html',
-        controller: ['$http', function($http) {
+        controller: ['articlesService', function(articlesService) {
             angular.extend(this, {
                 $onInit() {
-                    $http.get('/articles').then((res) => {
+                    articlesService.get().then((res) => {
                         this.articles = res.data
                     })
 
@@ -41,7 +41,7 @@
                     // edit
                     this.edit = (selectedArticle) => {
                         if (selectedArticle.editMode) {
-                            $http.put('/articles/' + selectedArticle._id, selectedArticle).then((res) => {
+                            articlesService.edit(selectedArticle).then((res) => {
                                 this.selectedArticle.editMode = false
                             })
                         } else {
@@ -53,12 +53,12 @@
                     // cancel
                     this.cancel = (selectedArticle) => {
                         this.selectedArticle = previous[selectedArticle.position]
-                        this.articles[selectedArticle.position] = this.selectedArticle
+                        this.articles[selectedArticle.position + this.articlestate] = this.selectedArticle
                     }
 
                     // delete
                     this.delete = (selectedArticle, position) => {
-                        $http.delete('/articles/' + selectedArticle._id, selectedArticle).then((res) => {
+                        articlesService.delete(selectedArticle).then((res) => {
                             this.articles.splice(selectedArticle.position + this.articlestate, 1)
                         })
                         this.selectedArticle = null
@@ -68,7 +68,7 @@
                     //
                     // add Article
                     this.add = () => {
-                        $http.post('/articles', this.newArticle).then((res) => {
+                        articlesService.add(this.newArticle).then((res) => {
                             this.newArticle.PublishedAt = this.date
                             this.articles.push(this.newArticle)
                             this.newArticle = {}
