@@ -1,5 +1,6 @@
 <!-- List Articles -->
-<section ng-if="!$ctrl.selectedArticle && !$ctrl.addNewArticle">
+<!-- <section ng-if="!$ctrl.selectedArticle && !$ctrl.addNewArticle"> -->
+<section>
     <div class="container">
         <div class="row">
             <div class="col-xs-1 pagination-button">
@@ -28,7 +29,7 @@
         </div>
         <div class="row">
             <div class="col-xs-12 text-center">
-                <a ng-click="$ctrl.addNewArticle = true">
+                <a ng-click="$ctrl.addNewArticle = true" ui-sref="app.add">
                     <i class="fa fa-plus" aria-hidden="true"></i>
                     Add Article</a>
             </div>
@@ -37,7 +38,7 @@
 </section>
 
 <!-- Card + EditMode -->
-<section ng-if="$ctrl.selectedArticle">
+<!-- <section ng-if="$ctrl.selectedArticle">
     <div class="container">
         <div class="row">
             <div class="thumbnail">
@@ -67,10 +68,10 @@
             </div>
         </div>
     </div>
-</section>
+</section> -->
 
 <!-- Add Mode -->
-<section ng-if="$ctrl.addNewArticle">
+<!-- <section ng-if="$ctrl.addNewArticle">
     <div class="container">
         <div class="row">
             <div class="thumbnail">
@@ -89,4 +90,4 @@
             </div>
         </div>
     </div>
-</section>
+</section> -->

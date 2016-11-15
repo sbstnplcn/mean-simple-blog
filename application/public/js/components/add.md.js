@@ -1,9 +1,9 @@
 ((app) => {
     'use strict'
     app.config(['$stateProvider', ($stateProvider) => {
-        $stateProvider.state('app.articles', {
+        $stateProvider.state('app.add', {
             url:'/add',
-            template: '<add />'
+            template: '<add></add>'
         })
     }])
-})(angular.module('app.articles', []))
+})(angular.module('app.add', []))

@@ -1,28 +1,28 @@
 ((app) => {
     'use strict'
-    app.component('articles', {
+    app.component('article', {
         templateUrl: 'js/components/articles.html',
         controller: ['articlesService', function(articlesService) {
             angular.extend(this, {
                 $onInit() {
-                    articlesService.get().then((res) => {
-                        this.articles = res.data
-                    })
+                    // articlesService.get().then((res) => {
+                    //     this.articles = res.data
+                    // })
 
                     //// get date ////
                     //
-                    this.date = new Date().getTime()
+                    // this.date = new Date().getTime()
 
                     //// pagination ////
                     //
-                    this.articlestate = 0
-                    this.next = () => {
-                        this.articlestate == this.articles.length - 1 ? this.articlestate = 0 : this.articlestate++
-                    }
-
-                    this.prev = () => {
-                        this.articlestate < 1 ? this.articlestate = this.articles.length - 1 : this.articlestate--
-                    }
+                    // this.articlestate = 0
+                    // this.next = () => {
+                    //     this.articlestate == this.articles.length - 1 ? this.articlestate = 0 : this.articlestate++
+                    // }
+                    //
+                    // this.prev = () => {
+                    //     this.articlestate < 1 ? this.articlestate = this.articles.length - 1 : this.articlestate--
+                    // }
 
                     //// select mode ////
                     //
@@ -67,23 +67,23 @@
                     //// addMode ////
                     //
                     // add Article
-                    this.add = () => {
-                        articlesService.add(this.newArticle).then((res) => {
-                            this.newArticle.PublishedAt = this.date
-                            this.articles.push(this.newArticle)
-                            this.newArticle = {}
-                            this.addNewArticle = null
-                        })
-                    }
+                    // this.add = () => {
+                    //     articlesService.add(this.newArticle).then((res) => {
+                    //         this.newArticle.PublishedAt = this.date
+                    //         this.articles.push(this.newArticle)
+                    //         this.newArticle = {}
+                    //         this.addNewArticle = null
+                    //     })
+                    // }
 
                     // close AddNewArticle
-                    this.closeAddNewArticle = () => {
-                        this.newArticle = {}
-                        this.addNewArticle = null
-                    }
+                    // this.closeAddNewArticle = () => {
+                    //     this.newArticle = {}
+                    //     this.addNewArticle = null
+                    // }
 
                 }
             })
         }]
     })
-})(angular.module('app.articles', []))
+})(angular.module('app.article', []))

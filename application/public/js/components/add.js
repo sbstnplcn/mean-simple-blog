@@ -1,10 +1,13 @@
 ((app) => {
     'use strict'
-    app.component('articles', {
+    app.component('add', {
         templateUrl: 'js/components/articles.html',
         controller: ['articlesService', function(articlesService) {
             angular.extend(this, {
                 $onInit() {
+                    // articlesService.get().then((res) => {
+                    //     this.articles = res.data
+                    // })
 
                     //// get date ////
                     //
@@ -86,4 +89,4 @@
             })
         }]
     })
-})(angular.module('app.articles', []))
+})(angular.module('app.add', []))
