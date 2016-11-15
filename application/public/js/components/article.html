@@ -4,15 +4,14 @@
     <div class="container">
         <div class="row">
             <div class="thumbnail">
-                <a ng-click="$ctrl.close()" ng-if="!$ctrl.selectedArticle.editMode">Close</a>
+                <a ui-sref="app.articles" ng-if="!$ctrl.selectedArticle.editMode">Close</a>
                 <h3 ng-if="$ctrl.selectedArticle.editMode">Title</h3>
                 <h3>
                     <span ng-if="!$ctrl.selectedArticle.editMode">{{$ctrl.selectedArticle.title}}</span>
                     <textarea ng-if="$ctrl.selectedArticle.editMode" type="text" name="title" ng-model="$ctrl.selectedArticle.title"></textarea>
                 </h3>
                 <p>
-                    <span ng-if="!$ctrl.addNewArticle">{{$ctrl.selectedArticle.PublishedAt | date }}</span>
-                    <p ng-if="$ctrl.addNewArticle" ng-model="selectedArticle.PublishedAt">{{$ctrl.date | date}}</p>
+                    <span>{{$ctrl.selectedArticle.PublishedAt | date }}</span>
                 </p>
                 <hr/>
                 <p ng-if="$ctrl.selectedArticle.editMode">Content</p>

@@ -15,7 +15,7 @@
                                 <label>{{article.PublishedAt | date }}</label>
                                 <hr/>
                                 <p>{{article.content | limitTo : 200}}<span ng-if="article.content.length > 200">...</span></p>
-                                <a ng-click="$ctrl.selectArticle(article, $index)">Learn More
+                                <a ng-click="$ctrl.selectArticle(article, $index)" ui-sref="app.article({position : $index + $ctrl.articlestate})">Learn More
                                     <i class="fa fa-arrow-right" aria-hidden="true"></i>
                                 </a>
                             </div>

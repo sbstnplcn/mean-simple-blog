@@ -1,10 +1,9 @@
 <!-- Add Mode -->
-<!-- <section ng-if="$ctrl.addNewArticle"> -->
-    <section>
+<section>
     <div class="container">
         <div class="row">
             <div class="thumbnail">
-                <a ng-click="$ctrl.closeAddNewArticle()">Close</a>
+                <a ui-sref="app.articles">Close</a>
                 <h3>Title</h3>
                 <h3>
                     <textarea type="text" ng-model="$ctrl.newArticle.title"></textarea>
@@ -15,7 +14,7 @@
                 <p>
                     <textarea rows="4" cols="50" type="text" ng-model="$ctrl.newArticle.content"></textarea>
                 </p>
-                <a ng-click="$ctrl.add()">Add</a>
+                <a ng-click="$ctrl.add()" ui-sref="app.articles">Add</a>
             </div>
         </div>
     </div>

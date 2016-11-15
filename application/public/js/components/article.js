@@ -1,13 +1,13 @@
 ((app) => {
     'use strict'
     app.component('article', {
-        templateUrl: 'js/components/articles.html',
+        templateUrl: 'js/components/article.html',
         controller: ['articlesService', function(articlesService) {
             angular.extend(this, {
                 $onInit() {
-                    // articlesService.get().then((res) => {
-                    //     this.articles = res.data
-                    // })
+                    articlesService.get().then((res) => {
+                        this.articles = res.data
+                    })
 
                     //// get date ////
                     //
@@ -31,9 +31,10 @@
                         this.selectedArticle.position = index
                     }
 
-                    this.close = () => {
-                        this.selectedArticle = null
-                    }
+                    // this.close = () => {
+                    //         this.selectedArticle = null
+                    //     }
+
                     //// editMode ////
                     //
                     let previous = {}
@@ -81,7 +82,6 @@
                     //     this.newArticle = {}
                     //     this.addNewArticle = null
                     // }
-
                 }
             })
         }]
