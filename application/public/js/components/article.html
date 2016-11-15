@@ -1,0 +1,33 @@
+<!-- Card + EditMode -->
+<!-- <section ng-if="$ctrl.selectedArticle"> -->
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="thumbnail">
+                <a ng-click="$ctrl.close()" ng-if="!$ctrl.selectedArticle.editMode">Close</a>
+                <h3 ng-if="$ctrl.selectedArticle.editMode">Title</h3>
+                <h3>
+                    <span ng-if="!$ctrl.selectedArticle.editMode">{{$ctrl.selectedArticle.title}}</span>
+                    <textarea ng-if="$ctrl.selectedArticle.editMode" type="text" name="title" ng-model="$ctrl.selectedArticle.title"></textarea>
+                </h3>
+                <p>
+                    <span ng-if="!$ctrl.addNewArticle">{{$ctrl.selectedArticle.PublishedAt | date }}</span>
+                    <p ng-if="$ctrl.addNewArticle" ng-model="selectedArticle.PublishedAt">{{$ctrl.date | date}}</p>
+                </p>
+                <hr/>
+                <p ng-if="$ctrl.selectedArticle.editMode">Content</p>
+                <p>
+                    <span ng-if="!$ctrl.selectedArticle.editMode">{{$ctrl.selectedArticle.content}}</span>
+                    <textarea rows="4" cols="50" ng-if="$ctrl.selectedArticle.editMode" type="text" name="title" ng-model="$ctrl.selectedArticle.content"></textarea>
+                </p>
+                <p>
+                    <a ng-click="$ctrl.edit($ctrl.selectedArticle, $index)">{{($ctrl.selectedArticle.editMode ? 'Save' : 'Edit')}}</a>
+                    <a ng-if="$ctrl.selectedArticle.editMode" ng-click="$ctrl.cancel($ctrl.selectedArticle)">Cancel</a>
+                </p>
+                <p>
+                    <a ng-click="$ctrl.delete($ctrl.selectedArticle)">Delete</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</section>

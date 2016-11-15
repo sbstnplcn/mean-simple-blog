@@ -1,0 +1,22 @@
+<!-- Add Mode -->
+<!-- <section ng-if="$ctrl.addNewArticle"> -->
+    <section>
+    <div class="container">
+        <div class="row">
+            <div class="thumbnail">
+                <a ng-click="$ctrl.closeAddNewArticle()">Close</a>
+                <h3>Title</h3>
+                <h3>
+                    <textarea type="text" ng-model="$ctrl.newArticle.title"></textarea>
+                </h3>
+                <hr/>
+                <span ng-if="$ctrl.addNewArticle" ng-model="$ctrl.newArticle.PublishedAt"></span>
+                <p>Content</p>
+                <p>
+                    <textarea rows="4" cols="50" type="text" ng-model="$ctrl.newArticle.content"></textarea>
+                </p>
+                <a ng-click="$ctrl.add()">Add</a>
+            </div>
+        </div>
+    </div>
+</section>
