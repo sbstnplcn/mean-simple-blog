@@ -59,7 +59,7 @@
                     // delete
                     this.delete = (selectedArticle, position) => {
                         $http.delete('/articles/' + selectedArticle._id, selectedArticle).then((res) => {
-                            this.articles.splice(selectedArticle.position, 1)
+                            this.articles.splice(selectedArticle.position + this.articlestate, 1)
                         })
                         this.selectedArticle = null
                     }
