@@ -2,12 +2,15 @@
     'use strict'
     app.component('article', {
         templateUrl: 'js/components/article.html',
-        controller: ['articlesService', function(articlesService) {
+        controller: ['articlesService', '$stateParams', function(articlesService, $stateParams) {
             angular.extend(this, {
                 $onInit() {
                     articlesService.get().then((res) => {
                         this.articles = res.data
                     })
+
+                    this.selectedArticleView = $stateParams.position
+
 
                     //// get date ////
                     //
@@ -26,10 +29,11 @@
 
                     //// select mode ////
                     //
-                    this.selectArticle = (selectedArticle, index) => {
-                        this.selectedArticle = selectedArticle
-                        this.selectedArticle.position = index
-                    }
+                    // this.selectArticle = (selectedArticle, index) => {
+                    //     this.selectedArticle = selectedArticle
+                    //     this.selectedArticle.position = index
+                    // }
+
 
                     // this.close = () => {
                     //         this.selectedArticle = null

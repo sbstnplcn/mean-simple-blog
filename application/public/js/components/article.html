@@ -3,20 +3,20 @@
 <section>
     <div class="container">
         <div class="row">
-            <div class="thumbnail">
+            <div class="thumbnail" ng-repeat="selectedArticle in $ctrl.articles | limitTo : 1 : $ctrl.selectedArticleView track by $index">
                 <a ui-sref="app.articles" ng-if="!$ctrl.selectedArticle.editMode">Close</a>
                 <h3 ng-if="$ctrl.selectedArticle.editMode">Title</h3>
                 <h3>
-                    <span ng-if="!$ctrl.selectedArticle.editMode">{{$ctrl.selectedArticle.title}}</span>
+                    <span ng-if="!$ctrl.selectedArticle.editMode">{{selectedArticle.title}}</span>
                     <textarea ng-if="$ctrl.selectedArticle.editMode" type="text" name="title" ng-model="$ctrl.selectedArticle.title"></textarea>
                 </h3>
                 <p>
-                    <span>{{$ctrl.selectedArticle.PublishedAt | date }}</span>
+                    <span>{{selectedArticle.PublishedAt | date }}</span>
                 </p>
                 <hr/>
                 <p ng-if="$ctrl.selectedArticle.editMode">Content</p>
                 <p>
-                    <span ng-if="!$ctrl.selectedArticle.editMode">{{$ctrl.selectedArticle.content}}</span>
+                    <span ng-if="!$ctrl.selectedArticle.editMode">{{selectedArticle.content}}</span>
                     <textarea rows="4" cols="50" ng-if="$ctrl.selectedArticle.editMode" type="text" name="title" ng-model="$ctrl.selectedArticle.content"></textarea>
                 </p>
                 <p>
