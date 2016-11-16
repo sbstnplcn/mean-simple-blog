@@ -12,36 +12,37 @@
                     })
 
                     // begin of ng-repeat
-                    this.selectedArticleView = $stateParams.position
+                    this.articleView = $stateParams.position
 
                     //// editMode ////
                     //
                     let previous = {}
 
                     // edit
-                    this.edit = (selectedArticle) => {
-                        if (selectedArticle.editMode) {
-                            articlesService.edit(selectedArticle).then((res) => {
-                                this.selectedArticle.editMode = false
+                    this.edit = (article) => {
+                        if (this.editMode) {
+                            articlesService.edit(article).then((res) => {
+                                this.editMode = false
                             })
                         } else {
-                            previous[selectedArticle.position] = angular.copy(selectedArticle)
-                            this.selectedArticle.editMode = true
+                            previous[article.position] = angular.copy(article)
+                            this.editMode = true
                         }
                     }
 
                     // cancel
-                    this.cancel = (selectedArticle) => {
-                        this.selectedArticle = previous[selectedArticle.position]
-                        this.articles[selectedArticle.position + this.articlestate] = this.selectedArticle
+                    this.cancel = (article) => {
+                        article = previous[article.position]
+                        this.articles[this.articleView] = article
+                        this.editMode = false
+
                     }
 
                     // delete
-                    this.delete = (selectedArticle, position) => {
-                        articlesService.delete(selectedArticle).then((res) => {
-                            this.articles.splice(selectedArticle.position + this.articlestate, 1)
+                    this.delete = (article, position) => {
+                        articlesService.delete(article).then((res) => {
+                            this.articles.splice(article.position + this.articlestate, 1)
                         })
-                        this.selectedArticle = null
                     }
 
                 }
