@@ -5,18 +5,17 @@
         controller: ['articlesService', function(articlesService) {
             angular.extend(this, {
                 $onInit() {
-                    //// get date ////
-                    //
+
+                    // get date
                     this.date = new Date().getTime()
 
-                    //// addMode ////
-                    //
                     // add Article
                     this.add = () => {
                         articlesService.add(this.newArticle).then((res) => {
                             this.newArticle.PublishedAt = this.date
                         })
                     }
+                    
                 }
             })
         }]

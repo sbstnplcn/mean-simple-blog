@@ -5,39 +5,14 @@
         controller: ['articlesService', '$stateParams', function(articlesService, $stateParams) {
             angular.extend(this, {
                 $onInit() {
+
+                    // get all articles
                     articlesService.get().then((res) => {
                         this.articles = res.data
                     })
 
+                    // begin of ng-repeat
                     this.selectedArticleView = $stateParams.position
-
-
-                    //// get date ////
-                    //
-                    // this.date = new Date().getTime()
-
-                    //// pagination ////
-                    //
-                    // this.articlestate = 0
-                    // this.next = () => {
-                    //     this.articlestate == this.articles.length - 1 ? this.articlestate = 0 : this.articlestate++
-                    // }
-                    //
-                    // this.prev = () => {
-                    //     this.articlestate < 1 ? this.articlestate = this.articles.length - 1 : this.articlestate--
-                    // }
-
-                    //// select mode ////
-                    //
-                    // this.selectArticle = (selectedArticle, index) => {
-                    //     this.selectedArticle = selectedArticle
-                    //     this.selectedArticle.position = index
-                    // }
-
-
-                    // this.close = () => {
-                    //         this.selectedArticle = null
-                    //     }
 
                     //// editMode ////
                     //
@@ -69,23 +44,6 @@
                         this.selectedArticle = null
                     }
 
-                    //// addMode ////
-                    //
-                    // add Article
-                    // this.add = () => {
-                    //     articlesService.add(this.newArticle).then((res) => {
-                    //         this.newArticle.PublishedAt = this.date
-                    //         this.articles.push(this.newArticle)
-                    //         this.newArticle = {}
-                    //         this.addNewArticle = null
-                    //     })
-                    // }
-
-                    // close AddNewArticle
-                    // this.closeAddNewArticle = () => {
-                    //     this.newArticle = {}
-                    //     this.addNewArticle = null
-                    // }
                 }
             })
         }]
