@@ -1,28 +1,37 @@
-## Examen n°2 BORDEAUX
+# Simple MEAN-Stack Blog project
 
-Examen de la WildCodeSchool de la promotion de Bordeaux de septembre 2016.
+This project began during an evaluation at the WildCodeSchool.
+It has been improved to be a functional simple blog. I will continue to improve it.
 
-Pour débuter l'examen il faut **OBLIGATOIREMENT** forker le dépôt sur votre compte Github.
+### Prerequisites
+* [NodeJS](https://nodejs.org/en/)
+* [MongoDB](https://www.mongodb.com/)
+* Nodemon : npm install -g nodemon
 
-### Algorithme :
+### Installation
 
-2 exercices d'algorithme vous attendent dans le dossier /algorithmes
-
-**RAPPEL**
-Pour l'exercices vowelConsonant il vous faut utiliser Mocha de la manière suivante :
-
-```bash
-$ cd algorithmes/vowelConsonant
-$ mocha
+```
+bash
+git clone https://github.com/sbstnplcn/mean-simple-blog.git   
+cd mean-simple-blog
+npm i
 ```
 
-### Application
+
+### Development
+
+`npm run dev`  
+
+### Evaluation instructions
+
+```
+#### Application
 
 Une application Angular est a réaliser dans le dossier /application en respectant
 au mieux la maquette présente dans le dossier /application/maquette, cette application
 liste les articles d'un blog qui se trouvent dans le fichier posts.json.
 
-#### Objectifs :
+##### Objectifs :
 * Lister les différents posts
 * Mettre en forme la date
 * Editer un post
@@ -30,3 +39,8 @@ liste les articles d'un blog qui se trouvent dans le fichier posts.json.
 * Supprimer un post
 * Respecter la maquette
 * Utiliser un gestionnaire de dépendances
+```
+
+### Licence
+
+This project is licensed under the MIT Open Source license. For more information, see the LICENSE file in this repository.

@@ -41,7 +41,7 @@ process.on('SIGINT', function() {
 
 // Connexion à mongodb via mongoose
 let mongoose = require('mongoose')
-mongoose.connect('mongodb://localhost:27017/blog-exam');
+mongoose.connect('mongodb://localhost:27017/mean-simple-blog');
 
 // Création d'un middleware pour logger les erreurs
 app.use((error, request, response, next) => {
