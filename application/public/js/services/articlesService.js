@@ -3,16 +3,16 @@
     app.service('articlesService', function($http) {
     return {
         get() {
-            return $http.get('/articles')
+            return $http.get('/api/articles')
         },
         add(newArticle) {
-            return $http.post('/articles', newArticle)
+            return $http.post('/api/articles', newArticle)
         },
         edit(selectedArticle) {
-            return $http.put('/articles/' + selectedArticle._id, selectedArticle)
+            return $http.put('/api/articles/' + selectedArticle._id, selectedArticle)
         },
         delete(selectedArticle) {
-            return $http.delete('/articles/' + selectedArticle._id)
+            return $http.delete('/api/articles/' + selectedArticle._id)
         }
     }
     })
