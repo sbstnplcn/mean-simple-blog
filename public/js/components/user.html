@@ -1,0 +1,21 @@
+<!-- User Page -->
+<section>
+    <div class="container">
+        <div class="row">
+            <h3>Users List</h3>
+            <div class="thumbnail" ng-repeat="user in $ctrl.users track by $index">
+                <a ui-sref="app.articles">Close</a>
+                <h4>Name : {{user.name}}</h4>
+                <hr/>
+                <h5>Email : {{user.email}}</h5>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 text-center">
+                <a ng-click="$ctrl.addNewArticle = true" ui-sref="app.add">
+                    <i class="fa fa-plus" aria-hidden="true"></i>
+                    Add Article</a>
+            </div>
+        </div>
+    </div>
+</section>

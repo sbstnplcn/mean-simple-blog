@@ -19,6 +19,10 @@
             url: '/add',
             template: '<add></add>'
         })
+        $stateProvider.state('app.user', {
+            url: '/user',
+            template: '<user></user>'
+        })
     }])
 
 })(angular.module('app.config'))

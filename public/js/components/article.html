@@ -3,29 +3,42 @@
 <section>
     <div class="container">
         <div class="row">
-            <div class="thumbnail" ng-repeat="article in $ctrl.articles | limitTo : 1 : $ctrl.articleView track by $index">
-                <a ui-sref="app.articles" ng-if="!$ctrl.editMode">Close</a>
-                <h3 ng-if="$ctrl.editMode">Title</h3>
-                <h3>
-                    <span ng-if="!$ctrl.editMode">{{article.title}}</span>
-                    <textarea ng-if="$ctrl.editMode" type="text" name="title" ng-model="article.title"></textarea>
-                </h3>
-                <p>
-                    <span>{{article.PublishedAt | date }}</span>
-                </p>
-                <hr/>
-                <p ng-if="$ctrl.editMode">Content</p>
-                <p>
-                    <span ng-if="!$ctrl.editMode">{{article.content}}</span>
-                    <textarea rows="4" cols="50" ng-if="$ctrl.editMode" type="text" name="title" ng-model="article.content"></textarea>
-                </p>
-                <p>
-                    <a ng-click="$ctrl.edit(article)">{{($ctrl.editMode ? 'Save' : 'Edit')}}</a>
-                    <a ng-if="$ctrl.editMode" ng-click="$ctrl.cancel(article)">Cancel</a>
-                </p>
-                <p>
-                    <a ng-click="$ctrl.delete(article)" ui-sref="app.articles">Delete</a>
-                </p>
+            <div class="col-xs-1 pagination-button">
+                <a ng-click="$ctrl.prev()">prev</a>
+            </div>
+            <div class="col-xs-10">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="thumbnail" ng-repeat="article in $ctrl.articles | limitTo : 1 : $ctrl.articleView track by $index">
+                            <a ui-sref="app.articles" ng-if="!$ctrl.editMode">Close</a>
+                            <h3 ng-if="$ctrl.editMode">Title</h3>
+                            <h3>
+                                <span ng-if="!$ctrl.editMode">{{article.title}}</span>
+                                <textarea ng-if="$ctrl.editMode" type="text" name="title" ng-model="article.title"></textarea>
+                            </h3>
+                            <p>
+                                <span>{{article.PublishedAt | date }}</span>
+                            </p>
+                            <hr/>
+                            <p ng-if="$ctrl.editMode">Content</p>
+                            <p>
+                                <span ng-if="!$ctrl.editMode">{{article.content}}</span>
+                                <textarea rows="4" cols="50" ng-if="$ctrl.editMode" type="text" name="title" ng-model="article.content"></textarea>
+                            </p>
+                            <p>
+                                <a ng-click="$ctrl.edit(article)">{{($ctrl.editMode ? 'Save' : 'Edit')}}</a>
+                                <a ng-if="$ctrl.editMode" ng-click="$ctrl.cancel(article)">Cancel</a>
+                            </p>
+                            <p>
+                                <a ng-click="$ctrl.delete(article)" ui-sref="app.articles">Delete</a>
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-xs-1 pagination-button">
+                <a ng-click="$ctrl.next()">next</a>
             </div>
         </div>
     </div>

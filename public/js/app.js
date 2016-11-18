@@ -6,5 +6,6 @@
                         'app.article',
                         'app.services',
                         'app.config',
-                        'app.add'
+                        'app.add',
+                        'app.user'
                         ]))
