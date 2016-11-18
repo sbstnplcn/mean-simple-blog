@@ -1,10 +1,10 @@
 <!-- User Page -->
 <section>
     <div class="container">
+      <a ui-sref="app.articles">Home</a>
         <div class="row">
             <h3>Users List</h3>
             <div class="thumbnail" ng-repeat="user in $ctrl.users track by $index">
-                <a ui-sref="app.articles">Close</a>
                 <h4>Name : {{user.name}}</h4>
                 <hr/>
                 <h5>Email : {{user.email}}</h5>
