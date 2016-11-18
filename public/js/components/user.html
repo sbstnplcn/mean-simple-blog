@@ -1,21 +1,63 @@
 <!-- User Page -->
-<section>
+<section ng-if="!$ctrl.addNewArticle">
     <div class="container">
-      <a ui-sref="app.articles">Home</a>
+        <a ui-sref="app.articles" ng-if="!$ctrl.editMode">Home</a>
         <div class="row">
             <h3>Users List</h3>
             <div class="thumbnail" ng-repeat="user in $ctrl.users track by $index">
-                <h4>Name : {{user.name}}</h4>
+                <h4 ng-if="!$ctrl.editMode">Name :
+                    {{user.name}}</h4>
+                <h4 ng-if="$ctrl.editMode">Name :
+                    <input type="text" name="name" ng-model="user.name"></input>
+                </h4>
                 <hr/>
-                <h5>Email : {{user.email}}</h5>
+                <h5 ng-if="!$ctrl.editMode">Email :
+                    {{user.email}}</h5>
+                <h5 ng-if="$ctrl.editMode">Email :
+                    <input type="text" name="email" ng-model="user.email"></input>
+                </h5>
                 <p>{{user.isAdmin == true ? 'Admin' : 'User'}}</p>
+                <a ng-click="$ctrl.edit(user, $index)">{{($ctrl.editMode ? 'Save' : 'Edit')}}</a>
+                <a ng-if="$ctrl.editMode" ng-click="$ctrl.cancel(user)">Cancel</a>
+                <p>
+                    <a ng-click="$ctrl.delete(user, $index)">Delete</a>
+                </p>
             </div>
         </div>
         <div class="row">
-            <div class="col-xs-12 text-center">
-                <a ng-click="$ctrl.addNewArticle = true" ui-sref="app.add">
+            <div class="col-xs-6 text-center">
+                <a ui-sref="app.add">
                     <i class="fa fa-plus" aria-hidden="true"></i>
                     Add Article</a>
+            </div>
+            <div class="col-xs-6 text-center">
+                <a ng-click="$ctrl.addNewUser = true">
+                    <i class="fa fa-plus" aria-hidden="true"></i>
+                    Add User</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Add Mode -->
+<section ng-if="$ctrl.addNewUser">
+    <div class="container">
+        <div class="row">
+            <div class="thumbnail">
+                <a ng-click="$ctrl.addNewUser = null">Cancel</a>
+                <h3>Name</h3>
+                <h3>
+                    <input type="text" ng-model="$ctrl.newUser.name"></input>
+                </h3>
+                <hr/>
+                <h5>Email</h5>
+                <p>
+                    <input type="email" ng-model="$ctrl.newUser.email"></input>
+                </p>
+                <h5>Admin ?
+                    <input type="checkbox" ng-model="$ctrl.newUser.isAdmin" ng-true-value="true" ng-true-false="false">
+                </h5>
+                <a ng-click="$ctrl.add()">Add</a>
             </div>
         </div>
     </div>
