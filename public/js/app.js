@@ -7,5 +7,6 @@
                         'app.services',
                         'app.config',
                         'app.add',
-                        'app.user'
+                        'app.user',
+                        'app.adduser'
                         ]))

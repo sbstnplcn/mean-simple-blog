@@ -1,0 +1,24 @@
+<!-- Add Mode -->
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="thumbnail">
+                <a ng-click="$ctrl.addNewUser = null">Cancel</a>
+                <h3>Name</h3>
+                <h3>
+                    <input type="text" ng-model="$ctrl.newUser.name"></input>
+                </h3>
+                <hr/>
+                <h5>Email</h5>
+                <p>
+                    <input type="email" ng-model="$ctrl.newUser.email"></input>
+                </p>
+                <h5>Admin :
+                    <input type="checkbox" ng-model="$ctrl.newUser.isAdmin" ng-true-value="true" ng-true-false="false">
+                    {{$ctrl.newUser.isAdmin ? 'Yes' : 'No'}}
+                </h5>
+                <a ng-click="$ctrl.add()" ui-sref="app.user">Add</a>
+            </div>
+        </div>
+    </div>
+</section>
