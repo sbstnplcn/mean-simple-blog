@@ -1,21 +1,13 @@
-<div class="container">
-    <div class="row">
-        <div class="col-xs-12 text-center">
-            <a ui-sref="app.user">User</a>
-        </div>
-    </div>
-</div>
-<br/>
 <!-- List Articles -->
 <section>
     <div class="container">
         <div class="row">
-            <div class="col-xs-1 pagination-button">
+            <!-- <div class="col-xs-1 pagination-button">
                 <a ng-click="$ctrl.prev()">prev</a>
-            </div>
-            <div class="col-xs-10">
+            </div> -->
+            <div class="col-xs-12">
                 <div class="row">
-                    <div class="col-xs-12 col-md-4" ng-repeat="article in $ctrl.articles | limitTo : 3 : $ctrl.articlestate track by $index">
+                    <div class="col-xs-12 col-md-4" ng-repeat="article in $ctrl.articles | limitTo : $ctrl.articleslimit : $ctrl.articlestate track by $index">
                         <div class="thumbnail text-center">
                             <h3>{{article.title}}</h3>
                             <label>{{article.PublishedAt | date }}</label>
@@ -28,11 +20,14 @@
                             </a>
                         </div>
                     </div>
+                    <div class="col-xs-12 text-center">
+                        <a ng-click="$ctrl.loadMore()">Load More</a>
+                    </div>
                 </div>
             </div>
-            <div class="col-xs-1 pagination-button">
+            <!-- <div class="col-xs-1 pagination-button">
                 <a ng-click="$ctrl.next()">next</a>
-            </div>
+            </div> -->
         </div>
     </div>
 </section>

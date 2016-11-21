@@ -8,5 +8,6 @@
                         'app.config',
                         'app.add',
                         'app.user',
-                        'app.adduser'
+                        'app.adduser',
+                        'app.common'
                         ]))

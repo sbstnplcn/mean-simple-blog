@@ -21,6 +21,12 @@
                         this.articlestate < 1 ? this.articlestate = this.articles.length - 1 : this.articlestate--
                     }
 
+                    // articleslimit
+                    this.articleslimit = 3
+                    this.loadMore = () => {
+                        this.articleslimit += this.articleslimit
+                    }
+
                 }
             })
         }]

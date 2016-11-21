@@ -1,7 +1,7 @@
 ((app) => {
     'use strict'
     app.component('adduser', {
-        templateUrl: 'js/components/adduser.html',
+        templateUrl: 'js/components/users/adduser.html',
         controller: ['usersService', function(usersService) {
             angular.extend(this, {
                 $onInit() {
