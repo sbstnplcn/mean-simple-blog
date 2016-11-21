@@ -53,3 +53,7 @@ max-width: 100%;
 -o-transform:scale(1.01); /* Opera */
 transform:scale(1.01);
 }
+.navbar-nav{
+  background-color: #f8f8f8;
+  margin: 0px -15px;
+}

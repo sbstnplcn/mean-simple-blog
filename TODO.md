@@ -1,2 +1,4 @@
+- fix delete user in view users  
+- improve editmode view user, only selected user  
 - add builder like brunch  
 - add admin access  
