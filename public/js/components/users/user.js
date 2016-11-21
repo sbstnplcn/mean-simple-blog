@@ -1,7 +1,7 @@
 ((app) => {
     'use strict'
     app.component('user', {
-        templateUrl: 'js/components/user.html',
+        templateUrl: 'js/components/users/user.html',
         controller: ['usersService', function(usersService) {
             angular.extend(this, {
                 $onInit() {
@@ -39,15 +39,6 @@
                     this.delete = (user, position) => {
                         usersService.delete(user).then((res) => {
                             this.users.splice(user.position, 1)
-                        })
-                    }
-
-                    // add Article
-                    this.add = () => {
-                        usersService.add(this.newUser).then((res) => {
-                            this.newUser
-                            this.users.push(this.newUser)
-                            this.addNewUser = null
                         })
                     }
 

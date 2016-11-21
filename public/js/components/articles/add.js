@@ -1,7 +1,7 @@
 ((app) => {
     'use strict'
     app.component('add', {
-        templateUrl: 'js/components/add.html',
+        templateUrl: 'js/components/articles/add.html',
         controller: ['articlesService', function(articlesService) {
             angular.extend(this, {
                 $onInit() {
@@ -15,7 +15,7 @@
                             this.newArticle.PublishedAt = this.date
                         })
                     }
-                    
+
                 }
             })
         }]
