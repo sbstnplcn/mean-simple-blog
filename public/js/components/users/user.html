@@ -1,7 +1,6 @@
 <!-- User Page -->
-<section ng-if="!$ctrl.addNewArticle">
+<section>
     <div class="container">
-        <a ui-sref="app.articles" ng-if="!$ctrl.editMode">Home</a>
         <div class="row">
             <h3>Users List</h3>
             <div class="thumbnail" ng-repeat="user in $ctrl.users track by $index">
