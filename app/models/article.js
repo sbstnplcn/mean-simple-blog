@@ -17,6 +17,9 @@ let articleModel = mongoose.model('Article', new mongoose.Schema({
     },
     content: {
         type: String
+    },
+    category: {
+        type: String
     }
 }, {
     timestamps: true

@@ -24,7 +24,7 @@
                     // articleslimit
                     this.articleslimit = 3
                     this.loadMore = () => {
-                        this.articleslimit += this.articleslimit
+                        this.articleslimit += 3
                     }
 
                 }

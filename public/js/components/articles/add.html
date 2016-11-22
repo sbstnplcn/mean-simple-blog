@@ -4,15 +4,24 @@
         <div class="row">
             <div class="thumbnail">
                 <a ui-sref="app.articles">Close</a>
-                <h3>Title</h3>
+                <h3>Title : </h3>
                 <h3>
                     <textarea type="text" ng-model="$ctrl.newArticle.title"></textarea>
                 </h3>
                 <hr/>
                 <span ng-if="$ctrl.addNewArticle" ng-model="$ctrl.newArticle.PublishedAt"></span>
-                <p>Content</p>
+                <p>Content : </p>
                 <p>
                     <textarea rows="4" cols="50" type="text" ng-model="$ctrl.newArticle.content"></textarea>
+                </p>
+                <p>Category : </p>
+                <p>
+                    <select class="" name="" ng-model="$ctrl.newArticle.category">
+                        <option>Category 1</option>
+                        <option>Category 2</option>
+                        <option>Category 3</option>
+                        <option>Category 4</option>
+                    </select>
                 </p>
                 <a ng-click="$ctrl.add()" ui-sref="app.articles">Add</a>
             </div>

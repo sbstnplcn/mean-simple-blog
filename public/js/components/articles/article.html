@@ -19,6 +19,16 @@
                             <p>
                                 <span>{{article.PublishedAt | date }}</span>
                             </p>
+                            <p ng-if="!$ctrl.editMode">Category : {{article.category || 'Undefined'}}</p>
+                            <p ng-if="$ctrl.editMode">
+                                <span>Category : </span>
+                                <select class="" name="" ng-model="article.category">
+                                    <option>Category 1</option>
+                                    <option>Category 2</option>
+                                    <option>Category 3</option>
+                                    <option>Category 4</option>
+                                </select>
+                            </p>
                             <hr/>
                             <p ng-if="$ctrl.editMode">Content</p>
                             <p>
