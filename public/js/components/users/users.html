@@ -1,0 +1,33 @@
+<!-- User Page -->
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-6 text-center">
+                <a ui-sref="app.add">
+                    <i class="fa fa-plus" aria-hidden="true"></i>
+                    Add Article</a>
+            </div>
+            <div class="col-xs-6 text-center">
+                <a ui-sref="app.adduser">
+                    <i class="fa fa-plus" aria-hidden="true"></i>
+                    Add User</a>
+            </div>
+        </div>
+        <div class="row">
+            <h3>Users List</h3>
+            <div class="thumbnail" ng-repeat="user in $ctrl.users track by $index">
+                <h4>Name :
+                    {{user.name}}</h4>
+                </h4>
+                <hr/>
+                <h5>Email :
+                    {{user.email}}</h5>
+                </h5>
+                <p>{{user.isAdmin == true ? 'Admin' : 'User'}}</p>
+                <a ui-sref="app.user({position : $index})">
+                    <i class="fa fa-plus" aria-hidden="true"></i>
+                    View More</a>
+            </div>
+        </div>
+    </div>
+</section>

@@ -10,7 +10,6 @@
                     this.add = () => {
                         usersService.add(this.newUser).then((res) => {
                             this.newUser
-                            console.log(this.newUser)
                         })
                     }
 

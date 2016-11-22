@@ -3,7 +3,8 @@
     <div class="container">
         <div class="row">
             <h3>Users List</h3>
-            <div class="thumbnail" ng-repeat="user in $ctrl.users track by $index">
+            <div class="thumbnail" ng-repeat="user in $ctrl.users | limitTo : 1 : $ctrl.userView track by $index">
+                <p><a ui-sref="app.users">Close</a></p>
                 <h4 ng-if="!$ctrl.editMode">Name :
                     {{user.name}}</h4>
                 <h4 ng-if="$ctrl.editMode">Name :
@@ -17,22 +18,10 @@
                 </h5>
                 <p>{{user.isAdmin == true ? 'Admin' : 'User'}}</p>
                 <a ng-click="$ctrl.edit(user, $index)">{{($ctrl.editMode ? 'Save' : 'Edit')}}</a>
-                <a ng-if="$ctrl.editMode" ng-click="$ctrl.cancel(user)">Cancel</a>
+                <a ng-if="$ctrl.editMode" ng-click="$ctrl.cancel(user, $index)">Cancel</a>
                 <p>
-                    <a ng-click="$ctrl.delete(user, $index)">Delete</a>
+                    <a ng-click="$ctrl.delete(user, $index)" ui-sref="app.users">Delete</a>
                 </p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-6 text-center">
-                <a ui-sref="app.add">
-                    <i class="fa fa-plus" aria-hidden="true"></i>
-                    Add Article</a>
-            </div>
-            <div class="col-xs-6 text-center">
-                <a ui-sref="app.adduser">
-                    <i class="fa fa-plus" aria-hidden="true"></i>
-                    Add User</a>
             </div>
         </div>
     </div>

@@ -1,8 +1,8 @@
 ((app) => {
     'use strict'
-    app.component('user', {
-        templateUrl: 'js/components/users/user.html',
-        controller: ['usersService', '$stateParams', function(usersService, $stateParams) {
+    app.component('users', {
+        templateUrl: 'js/components/users/users.html',
+        controller: ['usersService', function(usersService) {
             angular.extend(this, {
                 $onInit() {
 
@@ -10,9 +10,6 @@
                     usersService.get().then((res) => {
                         this.users = res.data
                     })
-
-                    //begin of ng-repeat
-                    this.userView = $stateParams.position
 
                     //// editMode ////
                     //
@@ -29,15 +26,17 @@
                         } else {
                             previous[user.position] = angular.copy(user)
                             this.editMode = true
+
                         }
                     }
 
                     // cancel
                     this.cancel = (user, position) => {
                         user = previous[user.position]
-                        this.users[this.userView] = user
+                        this.users[position] = user
                         this.editMode = false
-                        }
+
+                    }
 
                     // delete
                     this.delete = (user, position) => {
@@ -50,4 +49,4 @@
             })
         }]
     })
-})(angular.module('app.user', []))
+})(angular.module('app.users', []))

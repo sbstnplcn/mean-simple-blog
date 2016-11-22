@@ -19,8 +19,12 @@
             url: '/add',
             template: '<add></add>'
         })
+        $stateProvider.state('app.users', {
+            url: '/users',
+            template: '<users></users>'
+        })
         $stateProvider.state('app.user', {
-            url: '/user',
+            url: '/user/:position',
             template: '<user></user>'
         })
         $stateProvider.state('app.adduser', {

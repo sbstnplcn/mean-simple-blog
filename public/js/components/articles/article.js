@@ -44,7 +44,6 @@
                         article = previous[article.position]
                         this.articles[this.articleView] = article
                         this.editMode = false
-
                     }
 
                     // delete
