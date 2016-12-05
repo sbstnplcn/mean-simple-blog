@@ -24,7 +24,7 @@
                     {{user.email}}</h5>
                 </h5>
                 <p>{{user.isAdmin == true ? 'Admin' : 'User'}}</p>
-                <a ui-sref="app.user({position : $index})">
+                <a ui-sref="app.user({userId : user._id})">
                     <i class="fa fa-plus" aria-hidden="true"></i>
                     View More</a>
             </div>
