@@ -4,6 +4,7 @@
   "description": "Mean Simple Blog",
   "main": "server.js",
   "scripts": {
+    "prestart": "brunch build",
     "start": "node server.js",
     "dev": "brunch watch --server"
   },
