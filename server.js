@@ -7,6 +7,7 @@ let bodyParser = require('body-parser')
 let methodOverride = require('method-override')
 let morgan = require('morgan')
 let routes = require('./app/routes')
+const ENV = require('./config/env')
 const port = process.env.PORT || 8000
 
 // Indication du dossier de notre application Angular
@@ -41,7 +42,7 @@ process.on('SIGINT', function() {
 
 // Connexion à mongodb via mongoose
 let mongoose = require('mongoose')
-mongoose.connect('mongodb://localhost:27017/mean-simple-blog');
+mongoose.connect(ENV.db)
 
 // Création d'un middleware pour logger les erreurs
 app.use((error, request, response, next) => {

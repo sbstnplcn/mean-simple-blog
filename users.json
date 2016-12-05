@@ -1,0 +1,3 @@
+{"_id":{"$oid":"582efe4dc722a02f5435210a"},"updatedAt":{"$date":"2016-11-22T12:37:52.492Z"},"createdAt":{"$date":"2016-11-18T13:12:45.906Z"},"name":"Sebastien","email":"sbstnplcn@gmail.com","isAdmin":true,"__v":0,"articles":["582e13b0c131a21f52ddf0d5"]}
+{"_id":{"$oid":"58343f76bd015e1231866978"},"updatedAt":{"$date":"2016-11-22T13:08:34.118Z"},"createdAt":{"$date":"2016-11-22T12:52:06.982Z"},"name":"tata","email":"tata@ta.ta","articles":[],"isAdmin":false,"__v":0}
+{"_id":{"$oid":"583463c85582d1178cfcc1de"},"updatedAt":{"$date":"2016-11-22T15:27:04.758Z"},"createdAt":{"$date":"2016-11-22T15:27:04.758Z"},"name":"toto","email":"toto@to.to","articles":[],"isAdmin":true,"__v":0}
