@@ -7,7 +7,6 @@ let bodyParser = require('body-parser')
 let methodOverride = require('method-override')
 let morgan = require('morgan')
 let routes = require('./app/routes')
-let mongoose = require('mongoose')
 const ENV = require('./config/env')
 const port = process.env.PORT || 8000
 
