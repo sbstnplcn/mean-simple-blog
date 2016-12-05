@@ -7,14 +7,15 @@
                 $onInit() {
 
                     //get all users
-                    usersService.get().then((res) => {
-                        this.users = res.data
+                    // usersService.get().then((res) => {
+                    //     this.users = res.data
+                    //
+                    //
+                    // })
 
-                        usersService.getPopulate(this.users[$stateParams.position]).then((res)=>{
-                            this.user = res.data
-                        })
+                    usersService.getPopulate($stateParams).then((res)=>{
+                        this.user = res.data
                     })
-
                     // get all users populate of articles
 
 

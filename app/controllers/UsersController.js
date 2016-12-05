@@ -11,8 +11,8 @@ class UsersController extends Controller {
 
     findById(req,res, next){
       this.model.findById(req.params.id).populate({
-        path: 'Article',
-        populate:({path: 'author', populate:{ path: 'Article'}})
+        path: 'articles',
+        populate:({path: 'users', populate:{ path: 'articles'}})
         }).exec((err, document)=>{
         if (err) next(err)
         else res.json(document)

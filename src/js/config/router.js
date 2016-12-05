@@ -12,7 +12,7 @@
             template: '<articles></articles>'
         })
         $stateProvider.state('app.article', {
-            url: '/article/:position',
+            url: '/article/:articleId',
             template: '<article></article>'
         })
         $stateProvider.state('app.add', {
@@ -24,7 +24,7 @@
             template: '<users></users>'
         })
         $stateProvider.state('app.user', {
-            url: '/users/user/:position',
+            url: '/users/user/:userId',
             template: '<user></user>'
         })
         $stateProvider.state('app.adduser', {
