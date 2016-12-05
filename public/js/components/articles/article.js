@@ -2,7 +2,7 @@
     'use strict'
     app.component('article', {
         templateUrl: 'js/components/articles/article.html',
-        controller: ['articlesService', '$stateParams','$state', function(articlesService, $stateParams, $state) {
+        controller: ['articlesService', 'usersService', '$stateParams', '$state', function(articlesService, usersService, $stateParams, $state) {
             angular.extend(this, {
                 $onInit() {
 
@@ -11,16 +11,25 @@
                         this.articles = res.data
                     })
 
+                    // get all users for selector
+                    usersService.get().then((res) => {
+                        this.users = res.data
+                    })
+
                     // begin of ng-repeat
                     this.articleView = $stateParams.position
 
                     // pagination
                     this.next = () => {
-                        $state.go('.', {position: Number($stateParams.position) == this.articles.length - 1 ? '0' : Number($stateParams.position) + 1})
+                        $state.go('.', {
+                            position: Number($stateParams.position) == this.articles.length - 1 ? '0' : Number($stateParams.position) + 1
+                        })
                     }
 
                     this.prev = () => {
-                        $state.go('.', {position: Number($stateParams.position) < 1 ? this.articles.length - 1 : Number($stateParams.position) - 1})
+                        $state.go('.', {
+                            position: Number($stateParams.position) < 1 ? this.articles.length - 1 : Number($stateParams.position) - 1
+                        })
                     }
 
                     //// editMode ////

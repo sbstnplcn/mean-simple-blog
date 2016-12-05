@@ -5,6 +5,9 @@
         get() {
             return $http.get('/api/users')
         },
+        getPopulate(users) {
+            return $http.get('/api/users/' + users._id)
+        },
         add(newUser) {
             return $http.post('/api/users', newUser)
         },

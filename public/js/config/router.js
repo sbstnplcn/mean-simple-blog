@@ -24,11 +24,11 @@
             template: '<users></users>'
         })
         $stateProvider.state('app.user', {
-            url: '/user/:position',
+            url: '/users/user/:position',
             template: '<user></user>'
         })
         $stateProvider.state('app.adduser', {
-            url: '/user/add',
+            url: '/users/add',
             template: '<adduser></adduser>'
         })
     }])

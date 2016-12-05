@@ -19,16 +19,27 @@
                             <p>
                                 <span>{{article.PublishedAt | date }}</span>
                             </p>
-                            <p ng-if="!$ctrl.editMode">Category : {{article.category || 'Undefined'}}</p>
-                            <p ng-if="$ctrl.editMode">
-                                <span>Category : </span>
-                                <select class="" name="" ng-model="article.category">
-                                    <option>Category 1</option>
-                                    <option>Category 2</option>
-                                    <option>Category 3</option>
-                                    <option>Category 4</option>
-                                </select>
-                            </p>
+                            <div class="col-sm-6">
+                              <p ng-if="!$ctrl.editMode">Category : {{article.category || 'Undefined'}}</p>
+                              <p ng-if="$ctrl.editMode">
+                                  <span>Category : </span>
+                                  <select class="" name="" ng-model="article.category">
+                                      <option>Category 1</option>
+                                      <option>Category 2</option>
+                                      <option>Category 3</option>
+                                      <option>Category 4</option>
+                                  </select>
+                              </p>
+                            </div>
+                            <div class="col-sm-6">
+                              <p ng-if="!$ctrl.editMode">Author : {{article.author || 'Undefined'}}</p>
+                              <p ng-if="$ctrl.editMode">
+                                  <span>Author : </span>
+                                  <select ng-model="article.author">
+                                      <option ng-repeat="user in $ctrl.users">{{user.name}}</option>
+                                  </select>
+                              </p>
+                            </div>
                             <hr/>
                             <p ng-if="$ctrl.editMode">Content</p>
                             <p>

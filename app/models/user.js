@@ -14,7 +14,10 @@ let userModel = mongoose.model('User', new mongoose.Schema({
         type: Boolean,
         default: false
     },
-    articles : [{ type: mongoose.Schema.Types.ObjectId, ref: 'articles' }]
+    articles: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Article'
+    }]
 }, {
     timestamps: true
 }))

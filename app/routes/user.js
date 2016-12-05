@@ -14,6 +14,9 @@ module.exports = (app) => {
     app.get('/users/:id', (req, res, next) => {
         return ctrl.findById(req, res, next)
     })
+    app.get('/users/:id/articles', (req, res, next) => {
+        return ctrl.findById(req, res, next)
+    })
 
     app.post('/users', (req, res, next) => {
         return ctrl.create(req, res, next)

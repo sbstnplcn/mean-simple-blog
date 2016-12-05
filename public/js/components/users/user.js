@@ -9,7 +9,14 @@
                     //get all users
                     usersService.get().then((res) => {
                         this.users = res.data
+
+                        usersService.getPopulate(this.users[$stateParams.position]).then((res)=>{
+                            this.user = res.data
+                        })
                     })
+
+                    // get all users populate of articles
+
 
                     //begin of ng-repeat
                     this.userView = $stateParams.position
