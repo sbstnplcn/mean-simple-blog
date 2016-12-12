@@ -7,29 +7,46 @@
             abstract: true,
             template: '<ui-view></ui-view>'
         })
-        $stateProvider.state('app.articles', {
+        .state('app.articles', {
             url: '/',
             template: '<articles></articles>'
         })
-        $stateProvider.state('app.article', {
+        .state('app.article', {
             url: '/article/:articleId',
             template: '<article></article>'
         })
-        $stateProvider.state('app.add', {
+        .state('app.add', {
             url: '/add',
             template: '<add></add>'
         })
-        $stateProvider.state('app.users', {
+        .state('app.users', {
             url: '/users',
             template: '<users></users>'
         })
-        $stateProvider.state('app.user', {
+        .state('app.user', {
             url: '/users/user/:userId',
             template: '<user></user>'
         })
-        $stateProvider.state('app.adduser', {
+        .state('app.adduser', {
             url: '/users/add',
             template: '<adduser></adduser>'
+        })
+        .state('app.login', {
+            url: '/login',
+            template: '<login></login>'
+        })
+        .state('callback', {
+            url: '/auth/callback/:token',
+            template: '',
+            controller: ['usersService', '$stateParams', '$state', function(usersService, $stateParams, $state) {
+                if ($stateParams.token) {
+                    usersService.setToken($stateParams.token).then((user) => {
+                        $state.go('app.articles')
+                    })
+                } else {
+                    $state.go('app.articles')
+                }
+            }]
         })
     }])
 

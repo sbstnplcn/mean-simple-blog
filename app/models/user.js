@@ -10,6 +10,9 @@ let userModel = mongoose.model('User', new mongoose.Schema({
         type: String,
         unique: true
     },
+    password: {
+        type: String
+    },
     isAdmin: {
         type: Boolean,
         default: false

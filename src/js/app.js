@@ -3,6 +3,7 @@
 })(angular.module('app', [
     'ui.router',
     'app.views',
+    'app.common',
     'app.articles',
     'app.article',
     'app.services',
@@ -11,5 +12,5 @@
     'app.users',
     'app.user',
     'app.adduser',
-    'app.common'
+    'app.login'
 ]))

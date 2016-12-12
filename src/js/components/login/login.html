@@ -1,0 +1,18 @@
+<div class="row text-center">
+    <h3>Login</h3>
+    <div class="col-sm-12">
+        <p>
+            <span>Email</span>
+            <input type="text" placeholder="jean.dupont@mail.com" ng-model="$ctrl.user.email">
+        </p>
+    </div>
+    <div class="col-sm-12">
+        <p>
+            <span>Mot de Passe</span>
+            <input type="password" placeholder="mot de passe" ng-model="$ctrl.user.password">
+        </p>
+    </div>
+    <div class="col-sm-12">
+      <a ng-click="$ctrl.connect($ctrl.user)"><button class="btn btn-info">Login</button></a>
+    </div>
+</div>

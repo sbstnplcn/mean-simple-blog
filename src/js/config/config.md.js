@@ -1,3 +1,3 @@
 ((app) => {
     'use strict'
-})(angular.module('app.common', []))
+})(angular.module('app.config', []))
