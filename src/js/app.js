@@ -2,6 +2,7 @@
     'use strict'
 })(angular.module('app', [
     'ui.router',
+    'ngCookies',
     'app.views',
     'app.common',
     'app.articles',

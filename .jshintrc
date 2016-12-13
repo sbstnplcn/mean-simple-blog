@@ -1,20 +1,21 @@
 {
   "globals"   : {
-    "angular"    : false,
+    "angular"    : true,
     "window"     : false
   },
   "camelcase": true,
-  "curly": false,
+  "curly": true,
   "eqeqeq": true,
   "freeze": true,
   "indent": 2,
   "latedef": true,
   "laxcomma": true,
   "node": true,
-  "esnext": true,
+  "esversion": 6,
   "trailing": true,
   "strict": true,
-  "unused": "vars",
+  "unused": true,
   "undef": true,
+  "devel":true,
   "asi": true
 }

@@ -1,6 +1,6 @@
 ((app) => {
     'use strict'
-    app.service('usersService', ['$http', function($http) {
+    app.service('usersService', ['$http', '$cookies', function($http, $cookies) {
         return {
             get() {
                 return $http.get('/api/users')
@@ -17,9 +17,18 @@
             delete(selectedUser) {
                 return $http.delete('/api/users/' + selectedUser._id)
             },
-            connect(user) {
-                return $http.post('/api/auth', user)
-                
+            connect(data) {
+                return $http.post('/api/auth', data).then((res) => {
+                    this.currentUser = res.data.user
+                    $cookies.put('token', res.data.token)
+                })
+            },
+            disconnect() {
+                return new Promise((resolve, reject) => {
+                    $cookies.remove("token")
+                    this.currentUser = null
+                    resolve()
+                })
             }
         }
     }])

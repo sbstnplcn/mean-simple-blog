@@ -9,9 +9,12 @@
                 },
                 connect() {
                     usersService.connect(this.user).then((res) => {
-                        let user = res.data
-                        sessionStorage.setItem('token', user.token)
                         $state.go('app.articles')
+                    })
+                },
+                disconnect(){
+                    usersService.disconnect().then((res) => {
+                        $state.go('app.login')
                     })
                 }
             })

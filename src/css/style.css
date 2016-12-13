@@ -1,6 +1,7 @@
 * {
-  border-radius: 0px !important;
+    border-radius: 0px !important;
 }
+
 .jumbotron {
     border: 1px solid #e8e8e8 !important;
 }
@@ -39,23 +40,26 @@ label {
     font-size: 10px;
 }
 
-.thumbnail{
--webkit-transition: all 0.1s ease; /* Safari and Chrome */
--moz-transition: all 0.1s ease; /* Firefox */
--o-transition: all 0.1s ease; /* IE 9 */
--ms-transition: all 0.1s ease; /* Opera */
-transition: all 0.1s ease;
-max-width: 100%;
+.thumbnail {
+    -webkit-transition: all 0.1s ease;
+    -moz-transition: all 0.1s ease;
+    -o-transition: all 0.1s ease;
+    -ms-transition: all 0.1s ease;
+    transition: all 0.1s ease;
+    max-width: 100%;
 }
 
-.thumbnail:hover{
--webkit-transform:scale(1.01); /* Safari and Chrome */
--moz-transform:scale(1.01); /* Firefox */
--ms-transform:scale(1.01); /* IE 9 */
--o-transform:scale(1.01); /* Opera */
-transform:scale(1.01);
+.thumbnail:hover {
+    -webkit-transform: scale(1.01);
+    -moz-transform: scale(1.01);
+    -ms-transform: scale(1.01);
+    -o-transform: scale(1.01);
+    transform: scale(1.01);
 }
-.navbar-nav{
-  background-color: #f8f8f8;
-  margin: 0px -15px;
+
+.navbar-nav {
+    background-color: #f8f8f8;
+    margin: 0px -15px;
+    z-index: 999999;
+    position: relative;
 }
