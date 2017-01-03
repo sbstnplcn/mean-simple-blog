@@ -13,7 +13,11 @@
         <nav id="bs-navbar" class="navbar-collapse" ng-class="{collapse: isCollapsed}" aria-expanded="false" style="height: 1px;">
             <ul class="nav navbar-nav navbar-right">
                 <li ui-sref-active="selected" ng-click="isCollapsed = !isCollapsed"><a ui-sref="app.users">Users</a></li>
-                <li ui-sref-active="selected" ng-click="isCollapsed = !isCollapsed"><a ui-sref="app.login">Login</a></li>
+                <li ui-sref-active="selected" ng-click="isCollapsed = !isCollapsed" ng-if="!$ctrl.currentUser"><a ui-sref="app.login">Login</a></li>
+                <li ui-sref-active="selected" ng-click="isCollapsed = !isCollapsed"><a>{{$ctrl.currentUser.name}}</a></li>
+                <li ng-if="$ctrl.currentUser">
+                    <a ng-click="$ctrl.disconnect()"><i class="fa fa-sign-out" aria-hidden="true"></i></a>
+                </li>
             </ul>
         </nav>
     </div>
